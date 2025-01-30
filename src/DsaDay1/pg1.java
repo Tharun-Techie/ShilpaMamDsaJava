@@ -2,27 +2,37 @@ package DsaDay1;
 import java.util.Scanner;
 
 class Stack {
-    private int max; // Maximum size of the stack
-    private int top; // Index of the top element
-    private int[] a; // Array to store stack elements
-
+     int max;
+     int top1,top2; // Index of the top element
+     int[] a;
     // Constructor to initialize the stack
     public Stack() {
         max = 5;
         a = new int[max];
-        top = -1; // Stack is initially empty
+        top1 = max;
+        top2 = -1; // Stack is initially empty
     }
 
     // Method to push an element onto the stack
     public void push() {
-        if (isFull()) {
-            System.out.println("Stack is full. Cannot push.");
-        } else {
+        if(top1-top2 == 1){
+            System.out.println("stack is full");
+        }
+        else {
             Scanner obj = new Scanner(System.in);
-            System.out.print("Enter the element to push: ");
-            int value = obj.nextInt();
-            a[++top] = value; // Increment top and insert the value
-            System.out.println("Pushed " + value + " to the stack.");
+            int ele = obj.nextInt();
+            System.out.println("1 for top 2 for bottom");
+            int chInsert = obj.nextInt();
+            if (chInsert == 1){
+                top1--;
+                a[top1]= ele;
+            }
+            else if (chInsert ==2) {
+                top2++;
+                a[top2] = ele;
+            }
+            else
+                System.out.println("Invalid cchoice");
         }
     }
 
@@ -38,15 +48,10 @@ class Stack {
 
     // Method to display the stack
     public void display() {
-        if (isEmpty()) {
-            System.out.println("Stack is empty.");
-        } else {
-            System.out.print("Stack: ");
-            for (int i = 0; i <= top; i++) {
-                System.out.print(a[i] + " ");
-            }
-            System.out.println();
+        if(top1 == max && top2==1){
+            System.out.println("Stack is empty");
         }
+        System.out.println("stack of the elements are :");
     }
 
     // Method to check if the stack is empty
