@@ -62,12 +62,20 @@ class MyaArry {
         System.out.println("Enter the position");
         Scanner ob = new Scanner(System.in);
         int pos = ob.nextInt();
-        System.out.println("Enter the elemnt");
-        int ele = ob.nextInt();
-        if (pos ==0)
-            insertBegin();
+        if (pos ==0){
+            insertBegin();}
+        else if (pos == p+1) {
+            insertEnd();}
         else {
-            a[pos] = ele;
+            for (int i =p+1;i>pos;i--) {
+                a[i] = a[i - 1];
+            }
+            System.out.println("enter ele");
+            int elee = ob.nextInt();
+            a[pos] = elee;
+            p++;
+
+
         }
     }
 
@@ -100,7 +108,7 @@ public class ArayAlinOne {
                 case 1:
                     arr.insertBegin();
                     break;
-                case 2:
+                case  2:
                     arr.insertEnd();
                     break;
                 case 3:
